@@ -3,7 +3,7 @@
 Само задание можно прочитать в файле task.md
 
 Сборка докер-контейнера:
-`docker docker build . -t proxy`
+`docker build . -t proxy`
 
 Запуск контейнера на 8080 порту:
 `docker run -p 8080:8080 -t proxy`
