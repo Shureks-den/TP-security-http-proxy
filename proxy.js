@@ -25,12 +25,13 @@ http.createServer((clientReq, clientRes) => {
     console.log(options)
 
     const proxy = http.request(options, function (res) {
-        // Отправляем так же информацию из заголовков, можно получать или через curl -v или писать тут 
+        // Отправляем так же информацию из заголовков, можно получать или через curl -v или расскоментить тут 
         // const extraInfo = 'HTTP/' + res.httpVersion + ' ' + res.statusCode.toString() + ' ' + res.statusMessage + '\n' +
         // JSON.stringify(res.headers) + '\n';
         // res.headers['content-length'] = Number(res.headers['content-length']) + Number(extraInfo.length);
         clientRes.writeHead(res.statusCode, res.headers);
         // clientRes.write(extraInfo);
+        // пайпы служат для перенаправляения запроса и ответа
         res.pipe(clientRes, {
             end: true
         });
